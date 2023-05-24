@@ -211,7 +211,7 @@ class CustomCard extends StatelessWidget {
         width: 360,
         height: 100,
         child: Padding(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -220,14 +220,14 @@ class CustomCard extends StatelessWidget {
                 width: 80,
                 height: 80,
               ),
-              SizedBox(width: 10.0),
+              const SizedBox(width: 10.0),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       mainText,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18,
                         fontFamily: 'GillSans',
                         fontWeight: FontWeight.w700,
@@ -235,7 +235,7 @@ class CustomCard extends StatelessWidget {
                     ),
                     Text(
                       subText,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                         fontFamily: 'GillSans',
                         fontWeight: FontWeight.w200,
@@ -258,7 +258,7 @@ class CustomCard extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(19),
                     ),
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                       fontFamily: 'GillSans',
@@ -281,35 +281,74 @@ class AppDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          const DrawerHeader(
+          DrawerHeader(
             decoration: BoxDecoration(
               color: lightgreyColor,
             ),
-            child: Text('@username'),
+            child: Container(
+              height: 50.0,
+              child: Align(
+                alignment: Alignment.bottomLeft,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    SizedBox(height: 10.0),
+                    Image.asset('assets/img/logo.png'),
+                    SizedBox(height: 10.0),
+                    Text('OLVAAAAAAA',
+                        style: TextStyle(
+                            fontFamily: 'GillSans',
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold)),
+                  ],
+                ),
+              ),
+            ),
           ),
           ListTile(
-            leading: Icon(
-              Icons.home,
+            leading: Image.asset(
+              'assets/icons/people.png',
+              width: 24,
+              height: 24,
             ),
-            title: const Text('TENTANG KAMI'),
+            title: const Text(
+              'TENTANG KAMI',
+              style: TextStyle(
+                  fontFamily: 'GillSans',
+                  fontSize: 18,
+                  fontWeight: FontWeight.normal),
+            ),
             onTap: () {
               Navigator.pop(context);
             },
           ),
           ListTile(
-            leading: Icon(
-              Icons.train,
+            leading: Image.asset(
+              'assets/icons/coffebeans.png',
+              width: 24,
+              height: 24,
             ),
-            title: const Text('KOPIPEDIA'),
+            title: const Text('KOPIPEDIA',
+                style: TextStyle(
+                    fontFamily: 'GillSans',
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal)),
             onTap: () {
               Navigator.pop(context);
             },
           ),
           ListTile(
-            leading: Icon(
-              Icons.train,
+            leading: Image.asset(
+              'assets/icons/ezpzkopi.png',
+              width: 24,
+              height: 24,
             ),
-            title: const Text('EZ PZ KOPI'),
+            title: const Text('EZ PZ KOPI',
+                style: TextStyle(
+                    fontFamily: 'GillSans',
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal)),
             onTap: () {
               Navigator.pop(context);
             },
@@ -320,25 +359,41 @@ class AppDrawer extends StatelessWidget {
               width: 24,
               height: 24,
             ),
-            title: const Text('KERANJANG'),
+            title: const Text('KERANJANG',
+                style: TextStyle(
+                    fontFamily: 'GillSans',
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal)),
             onTap: () {
               Navigator.pop(context);
             },
           ),
           ListTile(
-            leading: Icon(
-              Icons.train,
+            leading: Image.asset(
+              'assets/icons/card.png',
+              width: 24,
+              height: 24,
             ),
-            title: const Text('PAYMENT METHODS'),
+            title: const Text('PAYMENT METHODS',
+                style: TextStyle(
+                    fontFamily: 'GillSans',
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal)),
             onTap: () {
               Navigator.pop(context);
             },
           ),
           ListTile(
-            leading: Icon(
-              Icons.train,
+            leading: Image.asset(
+              'assets/icons/person.png',
+              width: 24,
+              height: 24,
             ),
-            title: const Text('ACCOUNT DETAILS'),
+            title: const Text('ACCOUNT DETAILS',
+                style: TextStyle(
+                    fontFamily: 'GillSans',
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal)),
             onTap: () {
               Navigator.pop(context);
             },
