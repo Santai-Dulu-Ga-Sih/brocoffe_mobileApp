@@ -1,12 +1,21 @@
 import 'package:brocoffe_moba/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:brocoffe_moba/pages/kopipedia.dart';
+import 'package:brocoffe_moba/main.dart';
+
+import 'package:go_router/go_router.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(HomePage());
 }
 
-class MyApp extends StatelessWidget {
+class HomePage extends StatelessWidget {
+  void _navigateToKopipediaPage(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => Kopipedia()));
+  }
+
   final List<String> itemList = [
     'kopirobusta',
     'kopigayo',
@@ -275,6 +284,11 @@ class CustomCard extends StatelessWidget {
 }
 
 class AppDrawer extends StatelessWidget {
+  void _navigateToKopipediaPage(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => Kopipedia()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -324,20 +338,19 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Image.asset(
-              'assets/icons/coffebeans.png',
-              width: 24,
-              height: 24,
-            ),
-            title: const Text('KOPIPEDIA',
-                style: TextStyle(
-                    fontFamily: 'GillSans',
-                    fontSize: 18,
-                    fontWeight: FontWeight.normal)),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
+              leading: Image.asset(
+                'assets/icons/coffebeans.png',
+                width: 24,
+                height: 24,
+              ),
+              title: GestureDetector(
+                onTap: () => _navigateToKopipediaPage(context),
+                child: Text('KOPIPEDIA',
+                    style: TextStyle(
+                        fontFamily: 'GillSans',
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal)),
+              )),
           ListTile(
             leading: Image.asset(
               'assets/icons/ezpzkopi.png',
@@ -383,20 +396,28 @@ class AppDrawer extends StatelessWidget {
               Navigator.pop(context);
             },
           ),
-          ListTile(
-            leading: Image.asset(
-              'assets/icons/person.png',
-              width: 24,
-              height: 24,
+          Align(
+            alignment: Alignment.bottomLeft,
+            child: ListTile(
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.asset('assets/icons/logout.png', width: 24, height: 24),
+                  SizedBox(height: 10.0),
+                  Text(
+                    'KELUAR',
+                    style: TextStyle(
+                      fontFamily: 'GillSans',
+                      fontSize: 18,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ],
+              ),
+              onTap: () {
+                // Tambahkan aksi yang ingin dilakukan saat tombol "Keluar" ditekan
+              },
             ),
-            title: const Text('ACCOUNT DETAILS',
-                style: TextStyle(
-                    fontFamily: 'GillSans',
-                    fontSize: 18,
-                    fontWeight: FontWeight.normal)),
-            onTap: () {
-              Navigator.pop(context);
-            },
           ),
         ],
       ),
