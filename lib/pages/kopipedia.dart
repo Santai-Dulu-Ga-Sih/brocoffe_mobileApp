@@ -39,11 +39,55 @@ class _KopipediaState extends State<Kopipedia> {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          toolbarHeight: 100,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios),
+            color: Colors.black,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text(
+                'KOPIPEDIA',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'GillSans',
+                  color: Colors.black,
+                ),
+              ),
+              SizedBox(height: 5),
+              Text(
+                'Bukan sekadar kopi yang dinikmati, tetapi apa yang ada dibelakang kopi itu juga dinikmati',
+                textAlign: TextAlign.left,
+                maxLines: 5,
+                style: TextStyle(
+                  fontSize: 12,
+                  fontFamily: 'GillSans',
+                  color: Colors.black,
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            Padding(
+              padding: EdgeInsets.only(right: 16),
+              child: Image.asset(
+                'assets/img/barista.png',
+                width: 100,
+              ),
+            ),
+          ],
+        ),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: 50.0),
+              SizedBox(height: 20.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -52,7 +96,7 @@ class _KopipediaState extends State<Kopipedia> {
                     text: 'Beans',
                     selectedButton: selectedButton,
                   ),
-                  const SizedBox(width: 10.0),
+                  SizedBox(width: 10.0),
                   CustomButton(
                     onPressed: () => _handleButtonClick('Coffee'),
                     text: 'Coffee',
@@ -60,7 +104,7 @@ class _KopipediaState extends State<Kopipedia> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20.0),
+              SizedBox(height: 10.0),
               if (showBeansCard) BeansCard(),
               if (showCoffeeCard) CoffeeCard(),
             ],
@@ -108,6 +152,9 @@ class CustomButton extends StatelessWidget {
         text,
         style: TextStyle(
           color: selectedButton == text ? Colors.white : Colors.black,
+          fontFamily: 'GillSans',
+          fontSize: 16,
+          fontWeight: FontWeight.normal,
         ),
       ),
     );
@@ -123,20 +170,20 @@ class _CoffeeCardState extends State<CoffeeCard> {
   int currentIndex = 0;
   List<Map<String, dynamic>> cards = [
     {
-      'image': 'assets/img/kopi.png',
-      'title': 'Arabica',
+      'image': 'assets/img/kopipedia_gulaaren.png',
+      'title': 'Kopi Gula Aren',
       'description':
-          'Kopi arabika pertama di dunia berasal dari Ethiopia, kemudian oleh bangsa Arab disebarkan ke penjuru dunia. Arabika adalah kopi paling populer sejagad raya. Harga kopi arabika pun lebih mahal karena perawatan dan pembudidayaannya tidak mudah. Ciri khas hasil dari kopi arabika adalah warna seduhan yang tidak terlalu pekat sehingga tingkat keasamannya lebih tinggi daripada kafeinnya. Dibandingkan dengan jenis-jenis kopi lainnya, kopi arabika memiliki aroma yang lebih wangi dan kaya.',
-      'asal': 'South/Central America & Africa',
-      'rested': '3-10 hari'
+          'Masyarakat Indonesia mulai mengkombinasikan kopi dengan gula aren untuk membuat minuman kopi yang unik dengan rasa yang khas. Kopi gula aren menjadi populer sebagai minuman tradisional yang disajikan di warung kopi atau kedai kopi di berbagai daerah di Indonesia, terutama di Jawa, Sumatra, dan Sulawesi. Kopi gula aren biasanya disajikan dalam bentuk kopi tubruk, yaitu metode penyeduhan kopi tradisional Indonesia yang melibatkan pencampuran kopi bubuk dengan air panas. Kemudian, gula aren dipotong kecil-kecil dan dimasukkan ke dalam cangkir atau gelas, lalu diseduh dengan kopi panas. Kopi gula aren memiliki rasa yang kaya dan manis karena gula aren yang memberikan sentuhan karamel yang lezat.',
+      'beans': 'Robusta / Arabica',
+      'speciality': 'Aren Sugar',
     },
     {
-      'image': 'assets/img/kopi.png',
+      'image': 'assets/img/kopipedia_americano.png',
       'title': 'Robusta',
       'description':
-          'Biji kopi robusta ditemukan di negara Kongo dalam ketinggian 400-700 mdpl dengan suhu 21-24 derajat celcius. Jenis kopi robusta lebih tahan terhadap serangan penyakit karat daun, namun memerlukan 10-11 bulan untuk proses pembuahannya menjadi buah. Dari segi rasa, kopi robusta cenderung lebih pahit dibandingkan arabika. Namun, dari segi harga, robusta lebih murah dibandingkan jenis kopi lainnya.',
-      'asal': 'Indonesia',
-      'rested': '1-3 hari'
+          'Masyarakat Indonesia mulai mengkombinasikan kopi dengan gula aren untuk membuat minuman kopi yang unik dengan rasa yang khas. Kopi gula aren menjadi populer sebagai minuman tradisional yang disajikan di warung kopi atau kedai kopi di berbagai daerah di Indonesia, terutama di Jawa, Sumatra, dan Sulawesi. Kopi gula aren biasanya disajikan dalam bentuk kopi tubruk, yaitu metode penyeduhan kopi tradisional Indonesia yang melibatkan pencampuran kopi bubuk dengan air panas. Kemudian, gula aren dipotong kecil-kecil dan dimasukkan ke dalam cangkir atau gelas, lalu diseduh dengan kopi panas. Kopi gula aren memiliki rasa yang kaya dan manis karena gula aren yang memberikan sentuhan karamel yang lezat.',
+      'beans': 'Robusta / Arabica',
+      'speciality': 'Aren Sugar',
     },
   ];
 
@@ -183,6 +230,7 @@ class _CoffeeCardState extends State<CoffeeCard> {
             ),
           ],
         ),
+        SizedBox(height: 20.0),
         Image.asset(
           cards[currentIndex]['image'],
           width: 330,
@@ -226,7 +274,7 @@ class _CoffeeCardState extends State<CoffeeCard> {
         Padding(
           padding: EdgeInsets.all(8.0),
           child: Text(
-            cards[currentIndex]['asal'],
+            cards[currentIndex]['beans'],
             style: const TextStyle(
               fontFamily: 'GillSans',
               fontSize: 20,
@@ -250,7 +298,7 @@ class _CoffeeCardState extends State<CoffeeCard> {
         Padding(
           padding: EdgeInsets.all(8.0),
           child: Text(
-            cards[currentIndex]['rested'],
+            cards[currentIndex]['speciality'],
             style: const TextStyle(
               fontFamily: 'GillSans',
               fontSize: 20,
@@ -262,8 +310,8 @@ class _CoffeeCardState extends State<CoffeeCard> {
         const Padding(
           padding: EdgeInsets.all(8.0),
           child: Text(
-            'tergantung pada varian dan tingkat pemanggangan, untuk memungkinkan pelepasan gas dan pelunakan',
-            textAlign: TextAlign.justify,
+            'Metode penyeduhan kopi tradisional Indonesia yang melibatkan pencampuran kopi bubuk dengan air panas',
+            textAlign: TextAlign.center,
             style: TextStyle(
               fontFamily: 'GillSans',
               fontSize: 14,
@@ -286,7 +334,7 @@ class _BeansCardState extends State<BeansCard> {
   int currentIndex = 0;
   List<Map<String, dynamic>> cards = [
     {
-      'image': 'assets/img/kopi.png',
+      'image': 'assets/img/kopipedia_kopi.png',
       'title': 'Arabica',
       'description':
           'Kopi arabika pertama di dunia berasal dari Ethiopia, kemudian oleh bangsa Arab disebarkan ke penjuru dunia. Arabika adalah kopi paling populer sejagad raya. Harga kopi arabika pun lebih mahal karena perawatan dan pembudidayaannya tidak mudah. Ciri khas hasil dari kopi arabika adalah warna seduhan yang tidak terlalu pekat sehingga tingkat keasamannya lebih tinggi daripada kafeinnya. Dibandingkan dengan jenis-jenis kopi lainnya, kopi arabika memiliki aroma yang lebih wangi dan kaya.',
@@ -294,7 +342,7 @@ class _BeansCardState extends State<BeansCard> {
       'rested': '3-10 hari'
     },
     {
-      'image': 'assets/img/kopi.png',
+      'image': 'assets/img/kopipedia_kopi.png',
       'title': 'Robusta',
       'description':
           'Biji kopi robusta ditemukan di negara Kongo dalam ketinggian 400-700 mdpl dengan suhu 21-24 derajat celcius. Jenis kopi robusta lebih tahan terhadap serangan penyakit karat daun, namun memerlukan 10-11 bulan untuk proses pembuahannya menjadi buah. Dari segi rasa, kopi robusta cenderung lebih pahit dibandingkan arabika. Namun, dari segi harga, robusta lebih murah dibandingkan jenis kopi lainnya.',
@@ -346,6 +394,7 @@ class _BeansCardState extends State<BeansCard> {
             ),
           ],
         ),
+        SizedBox(height: 20.0),
         Image.asset(
           cards[currentIndex]['image'],
           width: 330,
