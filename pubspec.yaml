@@ -60,8 +60,10 @@ flutter:
      - assets/img/beans.png
      - assets/img/coffe.png
      - assets/img/list_kopi/
-     - assets/icons/
      - assets/img/barista.png
+     - assets/img/kopi.png
+     - assets/icons/
+
      
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -75,7 +77,7 @@ flutter:
   fonts:
      - family: GillSans
        fonts:
-         - asset: fonts/Gill-Sans.otf
+         - asset: lib/fonts/Gill-Sans.otf
 
   #   - family: Trajan Pro
   #     fonts:
