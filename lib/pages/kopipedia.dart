@@ -15,20 +15,20 @@ class Kopipedia extends StatefulWidget {
 
 class _KopipediaState extends State<Kopipedia> {
   String selectedButton = '';
-  bool showDataCard = false;
+  bool showBeansCard = false;
   bool showCoffeeCard = false;
 
   void _handleButtonClick(String buttonName) {
     setState(() {
       selectedButton = buttonName;
-      if (buttonName == 'Data') {
-        showDataCard = true;
+      if (buttonName == 'Beans') {
+        showBeansCard = true;
         showCoffeeCard = false;
       } else if (buttonName == 'Coffee') {
-        showDataCard = false;
+        showBeansCard = false;
         showCoffeeCard = true;
       } else {
-        showDataCard = false;
+        showBeansCard = false;
         showCoffeeCard = false;
       }
     });
@@ -48,8 +48,8 @@ class _KopipediaState extends State<Kopipedia> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CustomButton(
-                    onPressed: () => _handleButtonClick('Data'),
-                    text: 'Data',
+                    onPressed: () => _handleButtonClick('Beans'),
+                    text: 'Beans',
                     selectedButton: selectedButton,
                   ),
                   const SizedBox(width: 10.0),
@@ -61,7 +61,7 @@ class _KopipediaState extends State<Kopipedia> {
                 ],
               ),
               const SizedBox(height: 20.0),
-              if (showDataCard) DataCard(),
+              if (showBeansCard) BeansCard(),
               if (showCoffeeCard) CoffeeCard(),
             ],
           ),
@@ -71,84 +71,144 @@ class _KopipediaState extends State<Kopipedia> {
   }
 }
 
-class CustomButton extends ElevatedButton {
-  CustomButton({
-    required VoidCallback onPressed,
-    required String text,
-    required String selectedButton,
-    Key? key,
-  }) : super(
-          onPressed: onPressed,
-          key: key,
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.resolveWith<Color>(
-              (states) {
-                if (selectedButton == text) {
-                  return Color.fromARGB(255, 131, 128, 128);
-                }
-                return Colors.white;
-              },
-            ),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-            ),
-            minimumSize: MaterialStateProperty.all<Size>(
-              Size(120.0, 40.0),
-            ),
-          ),
-          child: Text(
-            text,
-            style: TextStyle(
-              color: selectedButton == text ? Colors.white : Colors.black,
-            ),
-          ),
-        );
-}
+class CustomButton extends StatelessWidget {
+  final VoidCallback onPressed;
+  final String text;
+  final String selectedButton;
 
-class DataCard extends StatelessWidget {
+  const CustomButton({
+    required this.onPressed,
+    required this.text,
+    required this.selectedButton,
+  });
+
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        side: BorderSide.none, // Menghapus garis
-        borderRadius: BorderRadius.circular(0), // Mengatur sudut kartu
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.resolveWith<Color>(
+          (states) {
+            if (selectedButton == text) {
+              return const Color.fromARGB(255, 131, 128, 128);
+            }
+            return Colors.white;
+          },
+        ),
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+        ),
+        minimumSize: MaterialStateProperty.all<Size>(
+          const Size(120.0, 40.0),
+        ),
       ),
-      elevation: 0, // Menghapus elevation
-      child: Column(
-        children: [
-          Image.asset(
-            'assets/img/logo.png',
-            width: 150,
-            height: 150,
-          ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              'Data Card',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              'Ini adalah deskripsi data card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-              style: TextStyle(
-                fontSize: 14,
-              ),
-            ),
-          ),
-        ],
+      child: Text(
+        text,
+        style: TextStyle(
+          color: selectedButton == text ? Colors.white : Colors.black,
+        ),
       ),
     );
   }
 }
 
-class CoffeeCard extends StatelessWidget {
+class CoffeeCard extends StatefulWidget {
+  @override
+  _CoffeeCardState createState() => _CoffeeCardState();
+}
+
+class _CoffeeCardState extends State<CoffeeCard> {
+  int currentIndex = 0;
+  List<Map<String, dynamic>> cards = [
+    {
+      'image': 'assets/img/kopi.png',
+      'title': 'Data Card 1',
+      'description':
+          'Ini adalah deskripsi data card 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    },
+    {
+      'image': 'assets/img/kopi.png',
+      'title': 'Data Card 2',
+      'description':
+          'Ini adalah deskripsi data card 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    },
+  ];
+
+  void goToNextCard() {
+    setState(() {
+      currentIndex = (currentIndex + 1) % cards.length;
+    });
+  }
+
+  void goToPrevCard() {
+    setState(() {
+      currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(
+        side: BorderSide.none,
+        borderRadius: BorderRadius.circular(0),
+      ),
+      elevation: 0,
+      child: Column(children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            GestureDetector(
+              onTap: goToPrevCard,
+              child: Image.asset(
+                'assets/img/prev_button.png',
+                width: 48,
+                height: 48,
+              ),
+            ),
+            SizedBox(width: 16),
+            GestureDetector(
+              onTap: goToNextCard,
+              child: Image.asset(
+                'assets/img/next_button.png',
+                width: 48,
+                height: 48,
+              ),
+            ),
+          ],
+        ),
+        Image.asset(
+          cards[currentIndex]['image'],
+          width: 330,
+          height: 185,
+        ),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            cards[currentIndex]['title'],
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            cards[currentIndex]['description'],
+            style: TextStyle(
+              fontSize: 14,
+            ),
+          ),
+        ),
+      ]),
+    );
+  }
+}
+
+class BeansCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -161,8 +221,8 @@ class CoffeeCard extends StatelessWidget {
         children: [
           Image.asset(
             'assets/img/kopi.png',
-            width: 150,
-            height: 150,
+            width: 330,
+            height: 185,
           ),
           const Padding(
             padding: EdgeInsets.all(8.0),

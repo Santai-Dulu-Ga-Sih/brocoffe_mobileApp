@@ -63,6 +63,8 @@ flutter:
      - assets/img/barista.png
      - assets/img/kopi.png
      - assets/icons/
+     - assets/img/next_button.png
+     - assets/img/prev_button.png
 
      
   # An image asset can refer to one or more resolution-specific "variants", see
