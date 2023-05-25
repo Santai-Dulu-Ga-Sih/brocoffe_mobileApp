@@ -124,15 +124,19 @@ class _CoffeeCardState extends State<CoffeeCard> {
   List<Map<String, dynamic>> cards = [
     {
       'image': 'assets/img/kopi.png',
-      'title': 'Data Card 1',
+      'title': 'Arabica',
       'description':
-          'Ini adalah deskripsi data card 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          'Kopi arabika pertama di dunia berasal dari Ethiopia, kemudian oleh bangsa Arab disebarkan ke penjuru dunia. Arabika adalah kopi paling populer sejagad raya. Harga kopi arabika pun lebih mahal karena perawatan dan pembudidayaannya tidak mudah. Ciri khas hasil dari kopi arabika adalah warna seduhan yang tidak terlalu pekat sehingga tingkat keasamannya lebih tinggi daripada kafeinnya. Dibandingkan dengan jenis-jenis kopi lainnya, kopi arabika memiliki aroma yang lebih wangi dan kaya.',
+      'asal': 'South/Central America & Africa',
+      'rested': '3-10 hari'
     },
     {
       'image': 'assets/img/kopi.png',
-      'title': 'Data Card 2',
+      'title': 'Robusta',
       'description':
-          'Ini adalah deskripsi data card 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          'Biji kopi robusta ditemukan di negara Kongo dalam ketinggian 400-700 mdpl dengan suhu 21-24 derajat celcius. Jenis kopi robusta lebih tahan terhadap serangan penyakit karat daun, namun memerlukan 10-11 bulan untuk proses pembuahannya menjadi buah. Dari segi rasa, kopi robusta cenderung lebih pahit dibandingkan arabika. Namun, dari segi harga, robusta lebih murah dibandingkan jenis kopi lainnya.',
+      'asal': 'Indonesia',
+      'rested': '1-3 hari'
     },
   ];
 
@@ -168,7 +172,7 @@ class _CoffeeCardState extends State<CoffeeCard> {
                 height: 48,
               ),
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             GestureDetector(
               onTap: goToNextCard,
               child: Image.asset(
@@ -185,21 +189,86 @@ class _CoffeeCardState extends State<CoffeeCard> {
           height: 185,
         ),
         Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Text(
             cards[currentIndex]['title'],
+            style: const TextStyle(
+              fontFamily: 'GillSans',
+              fontSize: 24,
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            cards[currentIndex]['description'],
+            textAlign: TextAlign.justify,
+            style: const TextStyle(
+              fontFamily: 'GillSans',
+              fontSize: 14,
+              fontWeight: FontWeight.normal,
+              color: greyColor,
+            ),
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            'BEANS FROM',
             style: TextStyle(
-              fontSize: 18,
+              fontFamily: 'GillSans',
+              fontSize: 24,
               fontWeight: FontWeight.bold,
+              color: darkgreyColor,
             ),
           ),
         ),
         Padding(
           padding: EdgeInsets.all(8.0),
           child: Text(
-            cards[currentIndex]['description'],
+            cards[currentIndex]['asal'],
+            style: const TextStyle(
+              fontFamily: 'GillSans',
+              fontSize: 20,
+              fontWeight: FontWeight.normal,
+              color: greyColor,
+            ),
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            'RESTED FOR',
             style: TextStyle(
+              fontFamily: 'GillSans',
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: darkgreyColor,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            cards[currentIndex]['rested'],
+            style: const TextStyle(
+              fontFamily: 'GillSans',
+              fontSize: 20,
+              fontWeight: FontWeight.normal,
+              color: greyColor,
+            ),
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            'tergantung pada varian dan tingkat pemanggangan, untuk memungkinkan pelepasan gas dan pelunakan',
+            textAlign: TextAlign.justify,
+            style: TextStyle(
+              fontFamily: 'GillSans',
               fontSize: 14,
+              fontWeight: FontWeight.normal,
+              color: greyColor,
             ),
           ),
         ),
@@ -208,7 +277,44 @@ class _CoffeeCardState extends State<CoffeeCard> {
   }
 }
 
-class BeansCard extends StatelessWidget {
+class BeansCard extends StatefulWidget {
+  @override
+  _BeansCardState createState() => _BeansCardState();
+}
+
+class _BeansCardState extends State<BeansCard> {
+  int currentIndex = 0;
+  List<Map<String, dynamic>> cards = [
+    {
+      'image': 'assets/img/kopi.png',
+      'title': 'Arabica',
+      'description':
+          'Kopi arabika pertama di dunia berasal dari Ethiopia, kemudian oleh bangsa Arab disebarkan ke penjuru dunia. Arabika adalah kopi paling populer sejagad raya. Harga kopi arabika pun lebih mahal karena perawatan dan pembudidayaannya tidak mudah. Ciri khas hasil dari kopi arabika adalah warna seduhan yang tidak terlalu pekat sehingga tingkat keasamannya lebih tinggi daripada kafeinnya. Dibandingkan dengan jenis-jenis kopi lainnya, kopi arabika memiliki aroma yang lebih wangi dan kaya.',
+      'asal': 'South/Central America & Africa',
+      'rested': '3-10 hari'
+    },
+    {
+      'image': 'assets/img/kopi.png',
+      'title': 'Robusta',
+      'description':
+          'Biji kopi robusta ditemukan di negara Kongo dalam ketinggian 400-700 mdpl dengan suhu 21-24 derajat celcius. Jenis kopi robusta lebih tahan terhadap serangan penyakit karat daun, namun memerlukan 10-11 bulan untuk proses pembuahannya menjadi buah. Dari segi rasa, kopi robusta cenderung lebih pahit dibandingkan arabika. Namun, dari segi harga, robusta lebih murah dibandingkan jenis kopi lainnya.',
+      'asal': 'Indonesia',
+      'rested': '1-3 hari'
+    },
+  ];
+
+  void goToNextCard() {
+    setState(() {
+      currentIndex = (currentIndex + 1) % cards.length;
+    });
+  }
+
+  void goToPrevCard() {
+    setState(() {
+      currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -217,34 +323,119 @@ class BeansCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(0),
       ),
       elevation: 0,
-      child: Column(
-        children: [
-          Image.asset(
-            'assets/img/kopi.png',
-            width: 330,
-            height: 185,
-          ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              'Data Card',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+      child: Column(children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            GestureDetector(
+              onTap: goToPrevCard,
+              child: Image.asset(
+                'assets/img/prev_button.png',
+                width: 48,
+                height: 48,
               ),
             ),
-          ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              'Ini adalah deskripsi data card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-              style: TextStyle(
-                fontSize: 14,
+            const SizedBox(width: 16),
+            GestureDetector(
+              onTap: goToNextCard,
+              child: Image.asset(
+                'assets/img/next_button.png',
+                width: 48,
+                height: 48,
               ),
             ),
+          ],
+        ),
+        Image.asset(
+          cards[currentIndex]['image'],
+          width: 330,
+          height: 185,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            cards[currentIndex]['title'],
+            style: const TextStyle(
+              fontFamily: 'GillSans',
+              fontSize: 24,
+            ),
           ),
-        ],
-      ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            cards[currentIndex]['description'],
+            textAlign: TextAlign.justify,
+            style: const TextStyle(
+              fontFamily: 'GillSans',
+              fontSize: 14,
+              fontWeight: FontWeight.normal,
+              color: greyColor,
+            ),
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            'BEANS FROM',
+            style: TextStyle(
+              fontFamily: 'GillSans',
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: darkgreyColor,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            cards[currentIndex]['asal'],
+            style: const TextStyle(
+              fontFamily: 'GillSans',
+              fontSize: 20,
+              fontWeight: FontWeight.normal,
+              color: greyColor,
+            ),
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            'RESTED FOR',
+            style: TextStyle(
+              fontFamily: 'GillSans',
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: darkgreyColor,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            cards[currentIndex]['rested'],
+            style: const TextStyle(
+              fontFamily: 'GillSans',
+              fontSize: 20,
+              fontWeight: FontWeight.normal,
+              color: greyColor,
+            ),
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            'tergantung pada varian dan tingkat pemanggangan, untuk memungkinkan pelepasan gas dan pelunakan',
+            textAlign: TextAlign.justify,
+            style: TextStyle(
+              fontFamily: 'GillSans',
+              fontSize: 14,
+              fontWeight: FontWeight.normal,
+              color: greyColor,
+            ),
+          ),
+        ),
+      ]),
     );
   }
 }
