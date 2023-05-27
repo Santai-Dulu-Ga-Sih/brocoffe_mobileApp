@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:brocoffe_moba/pages/kopipedia.dart';
 import 'package:brocoffe_moba/main.dart';
-
+import 'package:brocoffe_moba/pages/tentang_kami.dart';
 import 'package:go_router/go_router.dart';
 
 void main() {
@@ -14,6 +14,11 @@ class HomePage extends StatelessWidget {
   void _navigateToKopipediaPage(BuildContext context) {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => Kopipedia()));
+  }
+
+  void _navigateToTentangKamiPage(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => TentangKami()));
   }
 
   final List<String> itemList = [
@@ -289,6 +294,11 @@ class AppDrawer extends StatelessWidget {
         context, MaterialPageRoute(builder: (context) => Kopipedia()));
   }
 
+  void _navigateToTentangKamiPage(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => TentangKami()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -321,22 +331,19 @@ class AppDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Image.asset(
-              'assets/icons/people.png',
-              width: 24,
-              height: 24,
-            ),
-            title: const Text(
-              'TENTANG KAMI',
-              style: TextStyle(
-                  fontFamily: 'GillSans',
-                  fontSize: 18,
-                  fontWeight: FontWeight.normal),
-            ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
+              leading: Image.asset(
+                'assets/icons/people.png',
+                width: 24,
+                height: 24,
+              ),
+              title: GestureDetector(
+                onTap: () => _navigateToTentangKamiPage(context),
+                child: const Text('TENTANG KAMI',
+                    style: TextStyle(
+                        fontFamily: 'GillSans',
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal)),
+              )),
           ListTile(
               leading: Image.asset(
                 'assets/icons/coffebeans.png',

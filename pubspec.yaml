@@ -52,20 +52,7 @@ flutter:
 
   assets:
      - assets/img/
-     - assets/img/mid_logo.png
-     - assets/img/logo.png
-     - assets/img/brocoffe_logo.png
-     - assets/img/bill.png
-     - assets/img/burger_menu.png
-     - assets/img/robusta.png
-     - assets/img/beans.png
-     - assets/img/coffe.png
-     - assets/img/list_kopi/
-     - assets/img/barista.png
-     - assets/img/kopi.png
      - assets/icons/
-     - assets/img/next_button.png
-     - assets/img/prev_button.png
 
      
   # An image asset can refer to one or more resolution-specific "variants", see
