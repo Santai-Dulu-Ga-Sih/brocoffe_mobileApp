@@ -5,22 +5,13 @@ import 'package:brocoffe_moba/pages/kopipedia.dart';
 import 'package:brocoffe_moba/main.dart';
 import 'package:brocoffe_moba/pages/tentang_kami.dart';
 import 'package:go_router/go_router.dart';
+import 'ezpz_page.dart';
 
 void main() {
   runApp(HomePage());
 }
 
 class HomePage extends StatelessWidget {
-  void _navigateToKopipediaPage(BuildContext context) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => Kopipedia()));
-  }
-
-  void _navigateToTentangKamiPage(BuildContext context) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => TentangKami()));
-  }
-
   final List<String> itemList = [
     'kopirobusta',
     'kopigayo',
@@ -299,6 +290,11 @@ class AppDrawer extends StatelessWidget {
         context, MaterialPageRoute(builder: (context) => TentangKami()));
   }
 
+  void _navigateToEzPz(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => EzpzPage()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -359,20 +355,19 @@ class AppDrawer extends StatelessWidget {
                         fontWeight: FontWeight.normal)),
               )),
           ListTile(
-            leading: Image.asset(
-              'assets/icons/ezpzkopi.png',
-              width: 24,
-              height: 24,
-            ),
-            title: const Text('EZ PZ KOPI',
-                style: TextStyle(
-                    fontFamily: 'GillSans',
-                    fontSize: 18,
-                    fontWeight: FontWeight.normal)),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
+              leading: Image.asset(
+                'assets/icons/ezpzkopi.png',
+                width: 24,
+                height: 24,
+              ),
+              title: GestureDetector(
+                onTap: () => _navigateToEzPz(context),
+                child: Text('EZ PZ KOPI',
+                    style: TextStyle(
+                        fontFamily: 'GillSans',
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal)),
+              )),
           ListTile(
             leading: Image.asset(
               'assets/icons/cart.png',

@@ -28,7 +28,7 @@ class RegistPage extends StatelessWidget {
             const SizedBox(height: 100),
             // Logo
             Image.asset(
-              'lib/images/Logo_app.png',
+              'assets/img/Logo_app.png',
               width: 400,
             ),
 

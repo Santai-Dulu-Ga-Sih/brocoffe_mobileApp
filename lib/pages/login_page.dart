@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:brocoffe_moba/components/my_button.dart';
 import 'package:brocoffe_moba/components/my_textfield.dart';
+import 'home_page.dart';
 
 import 'regist_page.dart';
 import 'ezpz_page.dart';
@@ -15,7 +16,7 @@ class LoginPage extends StatelessWidget {
 
   void _navigateToDashboard(BuildContext context) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => EzpzPage()));
+        context, MaterialPageRoute(builder: (context) => HomePage()));
   }
 
   // text editing controllers
@@ -38,7 +39,7 @@ class LoginPage extends StatelessWidget {
 
               // logo
               Image.asset(
-                'lib/images/Logo_app.png',
+                'assets/img/Logo_app.png',
                 width: 400,
               ),
 

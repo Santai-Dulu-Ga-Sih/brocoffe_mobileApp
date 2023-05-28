@@ -14,66 +14,50 @@ class EzpzPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(130),
-          child: AppBar(
-            backgroundColor: Colors.white,
-            flexibleSpace: Container(
-              padding: const EdgeInsets.only(left: 55, top: 35),
-              child: Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text(
-                        "EZ PZ KOPI",
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Karla',
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                      Text(
-                        "Nikmati kopi dengan wawasan",
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontFamily: 'Karla',
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                      Text(
-                        "yang lebih dan mudah",
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontFamily: 'Karla',
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  // Image orang
-                  Column(
-                    children: [
-                      const SizedBox(height: 40),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 26.0),
-                        child: Image.asset(
-                          'lib/images/barista1.png',
-                          width: 100,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          toolbarHeight: 100,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios),
+            color: Colors.black,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text(
+                'EZ PZ',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'GillSans',
+                  color: Colors.black,
+                ),
+              ),
+              SizedBox(height: 5),
+              Text(
+                'Nikmati kopi dengan wawasan yang lebih dan mudah',
+                textAlign: TextAlign.left,
+                maxLines: 5,
+                style: TextStyle(
+                  fontSize: 12,
+                  fontFamily: 'GillSans',
+                  color: Colors.black,
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            Padding(
+              padding: EdgeInsets.only(right: 16),
+              child: Image.asset(
+                'assets/img/barista1.png',
+                width: 100,
               ),
             ),
-            leading: IconButton(
-              color: Colors.black,
-              icon: const Icon(Icons.arrow_back_ios_new),
-              onPressed: () => {Navigator.pop(context)},
-            ),
-          ),
+          ],
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -146,7 +130,7 @@ class EzpzPage extends StatelessWidget {
                         GestureDetector(
                           onTap: putOnCart,
                           child: const CoffeeCard(
-                            imagePath: "lib/images/coffe_1.png",
+                            imagePath: "assets/img/coffe_1.png",
                             coffeName: "Kopi Jawa",
                             price: "12000",
                           ),
@@ -154,7 +138,7 @@ class EzpzPage extends StatelessWidget {
                         GestureDetector(
                           onTap: putOnCart,
                           child: const CoffeeCard(
-                            imagePath: "lib/images/coffe_1.png",
+                            imagePath: "assets/img/coffe_1.png",
                             coffeName: "Kopi Jawa",
                             price: "12000",
                           ),
@@ -162,7 +146,7 @@ class EzpzPage extends StatelessWidget {
                         GestureDetector(
                           onTap: putOnCart,
                           child: const CoffeeCard(
-                            imagePath: "lib/images/coffe_1.png",
+                            imagePath: "assets/img/coffe_1.png",
                             coffeName: "Kopi Jawa",
                             price: "12000",
                           ),
@@ -170,7 +154,7 @@ class EzpzPage extends StatelessWidget {
                         GestureDetector(
                           onTap: putOnCart,
                           child: const CoffeeCard(
-                            imagePath: "lib/images/coffe_1.png",
+                            imagePath: "assets/img/coffe_1.png",
                             coffeName: "Kopi Jawa",
                             price: "12000",
                           ),
@@ -178,7 +162,7 @@ class EzpzPage extends StatelessWidget {
                         GestureDetector(
                           onTap: putOnCart,
                           child: const CoffeeCard(
-                            imagePath: "lib/images/coffe_1.png",
+                            imagePath: "assets/img/coffe_1.png",
                             coffeName: "Kopi Jawa",
                             price: "12000",
                           ),
@@ -186,7 +170,7 @@ class EzpzPage extends StatelessWidget {
                         GestureDetector(
                           onTap: putOnCart,
                           child: const CoffeeCard(
-                            imagePath: "lib/images/coffe_1.png",
+                            imagePath: "assets/img/coffe_1.png",
                             coffeName: "Kopi Jawa",
                             price: "12000",
                           ),
@@ -194,7 +178,7 @@ class EzpzPage extends StatelessWidget {
                         GestureDetector(
                           onTap: putOnCart,
                           child: const CoffeeCard(
-                            imagePath: "lib/images/coffe_1.png",
+                            imagePath: "assets/img/coffe_1.png",
                             coffeName: "Kopi Jawa",
                             price: "12000",
                           ),
@@ -202,7 +186,7 @@ class EzpzPage extends StatelessWidget {
                         GestureDetector(
                           onTap: putOnCart,
                           child: const CoffeeCard(
-                            imagePath: "lib/images/coffe_1.png",
+                            imagePath: "assets/img/coffe_1.png",
                             coffeName: "Kopi Jawa",
                             price: "12000",
                           ),
