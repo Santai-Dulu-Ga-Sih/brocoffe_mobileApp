@@ -4,7 +4,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:brocoffe_moba/pages/kopipedia.dart';
 import 'package:brocoffe_moba/main.dart';
 import 'package:brocoffe_moba/pages/tentang_kami.dart';
-import 'package:go_router/go_router.dart';
 import 'ezpz_page.dart';
 
 void main() {

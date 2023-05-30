@@ -2,7 +2,6 @@ import 'package:brocoffe_moba/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:brocoffe_moba/pages/home_page.dart';
 import 'package:brocoffe_moba/main.dart';
-import 'package:go_router/go_router.dart';
 
 void main() {
   runApp(TentangKami());
