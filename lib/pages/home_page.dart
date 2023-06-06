@@ -397,6 +397,36 @@ class AppDrawer extends StatelessWidget {
               Navigator.pop(context);
             },
           ),
+          ListTile(
+            leading: Image.asset(
+              'assets/icons/accountdetails.png',
+              width: 24,
+              height: 24,
+            ),
+            title: const Text('ACCOUNT DETAILS',
+                style: TextStyle(
+                    fontFamily: 'GillSans',
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal)),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: Image.asset(
+              'assets/icons/addresses.png',
+              width: 24,
+              height: 24,
+            ),
+            title: const Text('ADDRESSES',
+                style: TextStyle(
+                    fontFamily: 'GillSans',
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal)),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
           Align(
             alignment: Alignment.bottomLeft,
             child: ListTile(
