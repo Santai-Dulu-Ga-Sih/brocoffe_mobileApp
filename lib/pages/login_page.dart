@@ -4,7 +4,6 @@ import 'package:brocoffe_moba/components/my_textfield.dart';
 import 'home_page.dart';
 
 import 'regist_page.dart';
-import 'ezpz_page.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});

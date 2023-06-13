@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:brocoffe_moba/components/coffee_card.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class EzpzPage extends StatelessWidget {
   const EzpzPage({super.key});
@@ -24,9 +22,9 @@ class EzpzPage extends StatelessWidget {
               Navigator.pop(context);
             },
           ),
-          title: Column(
+          title: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Text(
                 'EZ PZ',
                 style: TextStyle(

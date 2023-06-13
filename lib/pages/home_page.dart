@@ -2,9 +2,9 @@ import 'package:brocoffe_moba/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:brocoffe_moba/pages/kopipedia.dart';
-import 'package:brocoffe_moba/main.dart';
 import 'package:brocoffe_moba/pages/tentang_kami.dart';
 import 'ezpz_page.dart';
+import 'payment_method.dart';
 
 void main() {
   runApp(HomePage());
@@ -78,7 +78,7 @@ class HomePage extends StatelessWidget {
               CarouselSlider(
                 items: [
                   Image.asset('assets/img/robusta.png'),
-                  Image.asset('assets/img/robusta.png'),
+                  Image.asset('assets/img/arabica.png'),
                 ],
                 options: CarouselOptions(
                   height: 200,
@@ -92,9 +92,9 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10.0),
-              Row(
+              const Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   SizedBox(width: 22),
                   Text(
                     'KOPIPEDIA',
@@ -106,8 +106,8 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 10.0),
-              Row(
-                children: const [
+              const Row(
+                children: [
                   Expanded(
                     child: CardBeans(),
                   ),
@@ -117,9 +117,9 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 16.0),
-              Row(
+              const Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   SizedBox(width: 22),
                   Text(
                     'EZ PZ KOPI',
@@ -153,18 +153,23 @@ class HomePage extends StatelessWidget {
 class CardBeans extends StatelessWidget {
   const CardBeans({Key? key});
 
+  void _navigateToKopipedia(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Kopipedia()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Ink.image(
-        image: AssetImage('assets/img/beans.png'),
-        fit: BoxFit.fill,
-        width: 180,
-        height: 160,
-        child: InkWell(
-          onTap: () {
-            // Tambahkan fungsi yang ingin dijalankan ketika Card ditekan
-          },
+      child: InkWell(
+        onTap: () => _navigateToKopipedia(context),
+        child: Ink.image(
+          image: AssetImage('assets/img/beans.png'),
+          fit: BoxFit.fill,
+          width: 180,
+          height: 160,
         ),
       ),
     );
@@ -174,18 +179,23 @@ class CardBeans extends StatelessWidget {
 class CardKopi extends StatelessWidget {
   const CardKopi({Key? key});
 
+  void _navigateToKopipedia(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Kopipedia()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Ink.image(
-        image: AssetImage('assets/img/coffe.png'),
-        fit: BoxFit.fill,
-        width: 180,
-        height: 160,
-        child: InkWell(
-          onTap: () {
-            // Tambahkan fungsi yang ingin dijalankan ketika Card ditekan
-          },
+      child: InkWell(
+        onTap: () => _navigateToKopipedia(context),
+        child: Ink.image(
+          image: AssetImage('assets/img/coffe.png'),
+          fit: BoxFit.fill,
+          width: 180,
+          height: 160,
         ),
       ),
     );
@@ -294,11 +304,15 @@ class AppDrawer extends StatelessWidget {
         context, MaterialPageRoute(builder: (context) => EzpzPage()));
   }
 
+  void _navigateToPaymentMethod(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => PaymentMethod()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
+      child: Column(
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
@@ -315,110 +329,163 @@ class AppDrawer extends StatelessWidget {
                     SizedBox(height: 10.0),
                     Image.asset('assets/img/logo.png'),
                     SizedBox(height: 10.0),
-                    Text('OLVAAAAAAA',
-                        style: TextStyle(
-                            fontFamily: 'GillSans',
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold)),
+                    Text(
+                      'OLVAAAAAAA',
+                      style: TextStyle(
+                          fontFamily: 'GillSans',
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
               ),
             ),
           ),
-          ListTile(
-              leading: Image.asset(
-                'assets/icons/people.png',
-                width: 24,
-                height: 24,
-              ),
-              title: GestureDetector(
-                onTap: () => _navigateToTentangKamiPage(context),
-                child: const Text('TENTANG KAMI',
-                    style: TextStyle(
-                        fontFamily: 'GillSans',
-                        fontSize: 18,
-                        fontWeight: FontWeight.normal)),
-              )),
-          ListTile(
-              leading: Image.asset(
-                'assets/icons/coffebeans.png',
-                width: 24,
-                height: 24,
-              ),
-              title: GestureDetector(
-                onTap: () => _navigateToKopipediaPage(context),
-                child: Text('KOPIPEDIA',
-                    style: TextStyle(
-                        fontFamily: 'GillSans',
-                        fontSize: 18,
-                        fontWeight: FontWeight.normal)),
-              )),
-          ListTile(
-              leading: Image.asset(
-                'assets/icons/ezpzkopi.png',
-                width: 24,
-                height: 24,
-              ),
-              title: GestureDetector(
-                onTap: () => _navigateToEzPz(context),
-                child: Text('EZ PZ KOPI',
-                    style: TextStyle(
-                        fontFamily: 'GillSans',
-                        fontSize: 18,
-                        fontWeight: FontWeight.normal)),
-              )),
-          ListTile(
-            leading: Image.asset(
-              'assets/icons/cart.png',
-              width: 24,
-              height: 24,
-            ),
-            title: const Text('KERANJANG',
-                style: TextStyle(
-                    fontFamily: 'GillSans',
-                    fontSize: 18,
-                    fontWeight: FontWeight.normal)),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: Image.asset(
-              'assets/icons/card.png',
-              width: 24,
-              height: 24,
-            ),
-            title: const Text('PAYMENT METHODS',
-                style: TextStyle(
-                    fontFamily: 'GillSans',
-                    fontSize: 18,
-                    fontWeight: FontWeight.normal)),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          Align(
-            alignment: Alignment.bottomLeft,
-            child: ListTile(
-              title: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.asset('assets/icons/logout.png', width: 24, height: 24),
-                  SizedBox(height: 10.0),
-                  Text(
-                    'KELUAR',
-                    style: TextStyle(
-                      fontFamily: 'GillSans',
-                      fontSize: 18,
-                      fontWeight: FontWeight.normal,
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                ListTile(
+                  leading: Image.asset(
+                    'assets/icons/people.png',
+                    width: 24,
+                    height: 24,
+                  ),
+                  title: GestureDetector(
+                    onTap: () => _navigateToTentangKamiPage(context),
+                    child: const Text(
+                      'TENTANG KAMI',
+                      style: TextStyle(
+                          fontFamily: 'GillSans',
+                          fontSize: 18,
+                          fontWeight: FontWeight.normal),
                     ),
                   ),
-                ],
-              ),
-              onTap: () {
-                // Tambahkan aksi yang ingin dilakukan saat tombol "Keluar" ditekan
-              },
+                ),
+                ListTile(
+                  leading: Image.asset(
+                    'assets/icons/coffebeans.png',
+                    width: 24,
+                    height: 24,
+                  ),
+                  title: GestureDetector(
+                    onTap: () => _navigateToKopipediaPage(context),
+                    child: const Text(
+                      'KOPIPEDIA',
+                      style: TextStyle(
+                          fontFamily: 'GillSans',
+                          fontSize: 18,
+                          fontWeight: FontWeight.normal),
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: Image.asset(
+                    'assets/icons/ezpzkopi.png',
+                    width: 24,
+                    height: 24,
+                  ),
+                  title: GestureDetector(
+                    onTap: () => _navigateToEzPz(context),
+                    child: Text(
+                      'EZ PZ KOPI',
+                      style: TextStyle(
+                          fontFamily: 'GillSans',
+                          fontSize: 18,
+                          fontWeight: FontWeight.normal),
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: Image.asset(
+                    'assets/icons/cart.png',
+                    width: 24,
+                    height: 24,
+                  ),
+                  title: const Text(
+                    'KERANJANG',
+                    style: TextStyle(
+                        fontFamily: 'GillSans',
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal),
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  leading: Image.asset(
+                    'assets/icons/card.png',
+                    width: 24,
+                    height: 24,
+                  ),
+                  title: GestureDetector(
+                    onTap: () => _navigateToPaymentMethod(context),
+                    child: Text(
+                      'PAYMENT METHODS',
+                      style: TextStyle(
+                          fontFamily: 'GillSans',
+                          fontSize: 18,
+                          fontWeight: FontWeight.normal),
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: Image.asset(
+                    'assets/icons/accountdetails.png',
+                    width: 24,
+                    height: 24,
+                  ),
+                  title: const Text(
+                    'ACCOUNT DETAILS',
+                    style: TextStyle(
+                        fontFamily: 'GillSans',
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal),
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  leading: Image.asset(
+                    'assets/icons/addresses.png',
+                    width: 24,
+                    height: 24,
+                  ),
+                  title: const Text(
+                    'ADDRESSES',
+                    style: TextStyle(
+                        fontFamily: 'GillSans',
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal),
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
             ),
+          ),
+          ListTile(
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.asset('assets/icons/logout.png', width: 24, height: 24),
+                SizedBox(height: 10.0),
+                Text(
+                  'KELUAR',
+                  style: TextStyle(
+                    fontFamily: 'GillSans',
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+              ],
+            ),
+            onTap: () {
+              // Tambahkan aksi yang ingin dilakukan saat tombol "Keluar" ditekan
+            },
           ),
         ],
       ),
