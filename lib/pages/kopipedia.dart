@@ -1,8 +1,5 @@
 import 'package:brocoffe_moba/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:brocoffe_moba/pages/home_page.dart';
-import 'package:brocoffe_moba/main.dart';
-import 'package:go_router/go_router.dart';
 
 void main() {
   runApp(Kopipedia());
@@ -49,9 +46,9 @@ class _KopipediaState extends State<Kopipedia> {
               Navigator.pop(context);
             },
           ),
-          title: Column(
+          title: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Text(
                 'KOPIPEDIA',
                 style: TextStyle(
