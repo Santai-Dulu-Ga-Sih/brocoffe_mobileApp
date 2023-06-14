@@ -1,12 +1,13 @@
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+class ApiService {
+  static var baseUrl = "http://192.168.56.1:8000/api";
 
-final String url =
-    'http://10.0.2.2:8000/api/ez-pz-coffee'; // Ganti dengan URL API yang benar
+  static var loginUrl = "$baseUrl/login";
+  static var registUrl = "$baseUrl/registrasi";
+  static var logoutUrl = "$baseUrl/logout";
 
-Future<List<dynamic>> fetchEzPzData() async {
-  var response = await http.get(Uri.parse(url));
-  var data = json.decode(response.body);
+  static var ezpzUrl = "$baseUrl/ez-pz-coffee";
+  static var detail_ezpzUrl = "$baseUrl/ez-pz-coffee/{coffee_id}";
 
-  return data;
+  static var cartUrl = "$baseUrl/cart/{coffee_id}";
+  static var paymentUrl = "$baseUrl/payment/success/{customer_id}";
 }
