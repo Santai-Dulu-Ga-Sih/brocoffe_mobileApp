@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'cart.dart';
 
-
-
 class OrderPage extends StatefulWidget {
   final String nameOfProduct;
   final int priceOfProduct;
