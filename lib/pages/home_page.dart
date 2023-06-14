@@ -1,3 +1,4 @@
+import 'package:brocoffe_moba/pages/addresess.dart';
 import 'package:brocoffe_moba/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -34,7 +35,6 @@ class HomePage extends StatelessWidget {
     'Rp20.000',
     'Rp20.000'
   ];
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -311,6 +311,11 @@ class AppDrawer extends StatelessWidget {
         context, MaterialPageRoute(builder: (context) => PaymentMethod()));
   }
 
+  void _navigateToAddresess(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => AddresessPage()));
+  }
+
   @override
   Widget build(BuildContext context) {
     // Mendapatkan instance UserData yang ada di atas widget tree
@@ -457,16 +462,16 @@ class AppDrawer extends StatelessWidget {
                     width: 24,
                     height: 24,
                   ),
-                  title: const Text(
-                    'ADDRESSES',
-                    style: TextStyle(
-                        fontFamily: 'GillSans',
-                        fontSize: 18,
-                        fontWeight: FontWeight.normal),
+                  title: GestureDetector(
+                    onTap: () => _navigateToAddresess(context),
+                    child: Text(
+                      'ADDRESESS',
+                      style: TextStyle(
+                          fontFamily: 'GillSans',
+                          fontSize: 18,
+                          fontWeight: FontWeight.normal),
+                    ),
                   ),
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
                 ),
               ],
             ),
