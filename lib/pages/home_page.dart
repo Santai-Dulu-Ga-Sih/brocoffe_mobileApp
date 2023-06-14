@@ -5,6 +5,8 @@ import 'package:brocoffe_moba/pages/kopipedia.dart';
 import 'package:brocoffe_moba/pages/tentang_kami.dart';
 import 'ezpz_page.dart';
 import 'payment_method.dart';
+import 'package:provider/provider.dart';
+import 'login_page.dart';
 
 void main() {
   runApp(HomePage());
@@ -311,6 +313,8 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Mendapatkan instance UserData yang ada di atas widget tree
+    var userData = Provider.of<UserData>(context);
     return Drawer(
       child: Column(
         children: [
@@ -330,7 +334,7 @@ class AppDrawer extends StatelessWidget {
                     Image.asset('assets/img/logo.png'),
                     SizedBox(height: 10.0),
                     Text(
-                      'OLVAAAAAAA',
+                      "${userData.username}",
                       style: TextStyle(
                           fontFamily: 'GillSans',
                           fontSize: 18,
@@ -347,7 +351,7 @@ class AppDrawer extends StatelessWidget {
               children: [
                 ListTile(
                   leading: Image.asset(
-                    'assets/icons/people.png',
+                    'assets/icons/People.png',
                     width: 24,
                     height: 24,
                   ),
