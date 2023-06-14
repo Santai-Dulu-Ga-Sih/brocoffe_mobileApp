@@ -2,28 +2,44 @@ import 'package:flutter/material.dart';
 import 'package:brocoffe_moba/components/my_button.dart';
 import 'package:brocoffe_moba/components/my_textfield.dart';
 import 'home_page.dart';
+import 'package:provider/provider.dart';
 
 import 'regist_page.dart';
 
+class UserData extends ChangeNotifier {
+  String username;
+
+  UserData({required this.username});
+
+  void setUsername(String newUsername) {
+    username = newUsername;
+    notifyListeners();
+  }
+}
+
 class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+  LoginPage({Key? key});
 
   void _navigateToRegistPage(BuildContext context) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => RegistPage()));
+      context,
+      MaterialPageRoute(builder: (context) => RegistPage()),
+    );
   }
 
   void _navigateToDashboard(BuildContext context) {
+    var userData = Provider.of<UserData>(context, listen: false);
+    userData.setUsername(usernameController.text);
+
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HomePage()));
+      context,
+      MaterialPageRoute(builder: (context) => HomePage()),
+    );
   }
 
   // text editing controllers
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
-
-  // sign user in method
-  // void signUserIn() {}
 
   @override
   Widget build(BuildContext context) {
@@ -35,36 +51,25 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 50),
-
-              // logo
               Image.asset(
                 'assets/img/Logo_app.png',
                 width: 400,
               ),
-
               const SizedBox(height: 50),
-
-              // email textfield
               MyTextField(
                 labeltext: "Username",
                 controller: usernameController,
                 hintText: 'Masukkan username',
                 obscureText: false,
               ),
-
               const SizedBox(height: 10),
-
-              // password textfield
               MyTextField(
                 labeltext: "Password",
                 controller: passwordController,
                 hintText: 'Masukkan password',
                 obscureText: true,
               ),
-
               const SizedBox(height: 30),
-
-              // forgot password?
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Row(
@@ -77,25 +82,19 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
               ),
-
               const SizedBox(height: 30),
-
-              // sign in button
               MyButton(
-                // onTap: signUserIn,
                 onTap: () => _navigateToDashboard(context),
                 text_button: "Login",
               ),
-
               const SizedBox(height: 150),
-
-              // not a member? register now
               Text(
                 'Belum punya akun?',
                 style: TextStyle(
-                    color: Colors.grey[700],
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.grey[700],
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(width: 4),
               GestureDetector(
@@ -107,7 +106,7 @@ class LoginPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
