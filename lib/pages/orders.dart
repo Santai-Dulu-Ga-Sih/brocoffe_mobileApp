@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:brocoffe_moba/theme.dart';
 
 void main() {
   runApp(OrderHistory());
@@ -11,11 +12,10 @@ class OrderHistory extends StatefulWidget {
 
 class _OrderHistoryState extends State<OrderHistory> {
   final List<Map<String, dynamic>> data = [
-    /*
     {'Nama': 'Kopi Susu', 'Tanggal': '25 Juni 2023'},
     {'Nama': 'Kopi Luwak', 'Tanggal': '30 Juni 2023'},
     {'Nama': 'Kopi Hitam', 'Tanggal': '3 Juli 2023'},
-    {'Nama': 'Es Teh', 'Tanggal': '4 Juli 2023'},*/
+    {'Nama': 'Es Teh', 'Tanggal': '4 Juli 2023'}
   ];
 
   @override
@@ -37,7 +37,7 @@ class _OrderHistoryState extends State<OrderHistory> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Order',
+              'ORDERS',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w600,
@@ -60,9 +60,9 @@ class _OrderHistoryState extends State<OrderHistory> {
                     columns: [
                       DataColumn(
                         label: Container(
-                          padding: EdgeInsets.only(left: 20),
-                          alignment: Alignment.center,
-                          child: const Text(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          alignment: Alignment.centerLeft,
+                          child: Text(
                             'Nama',
                             textAlign: TextAlign.center,
                             style: TextStyle(
@@ -74,9 +74,9 @@ class _OrderHistoryState extends State<OrderHistory> {
                       ),
                       DataColumn(
                         label: Container(
-                          padding: EdgeInsets.only(left: 20),
-                          alignment: Alignment.center,
-                          child: const Text(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          alignment: Alignment.centerLeft,
+                          child: Text(
                             'Tanggal',
                             textAlign: TextAlign.center,
                             style: TextStyle(
@@ -136,10 +136,23 @@ class _OrderHistoryState extends State<OrderHistory> {
                         ),
                         DataCell(
                           ElevatedButton(
-                            child: Text('Pesan Lagi'),
+                            style: ElevatedButton.styleFrom(
+                              primary: greyColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                            ),
+                            child: Text(
+                              'Pesan Lagi',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: 'GillSans',
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
                             onPressed: () {
-                              // Aksi yang ingin dijalankan saat tombol ditekan
-                              print('Tombol Pesan Lagi ditekan!');
+                              print('Tombol Pesan Lagi ditekan');
                             },
                           ),
                         ),
