@@ -6,14 +6,12 @@ import 'package:brocoffe_moba/pages/kopipedia.dart';
 import 'package:brocoffe_moba/pages/tentang_kami.dart';
 import 'ezpz_page.dart';
 import 'payment_method.dart';
-import 'package:provider/provider.dart';
-import 'login_page.dart';
-
-void main() {
-  runApp(HomePage());
-}
 
 class HomePage extends StatelessWidget {
+  final String username;
+
+  HomePage({required this.username});
+
   final List<String> itemList = [
     'kopirobusta',
     'kopigayo',
@@ -318,8 +316,6 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Mendapatkan instance UserData yang ada di atas widget tree
-    var userData = Provider.of<UserData>(context);
     return Drawer(
       child: Column(
         children: [
@@ -339,7 +335,7 @@ class AppDrawer extends StatelessWidget {
                     Image.asset('assets/img/logo.png'),
                     SizedBox(height: 10.0),
                     Text(
-                      "${userData.username}",
+                      'username',
                       style: TextStyle(
                           fontFamily: 'GillSans',
                           fontSize: 18,
