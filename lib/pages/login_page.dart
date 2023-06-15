@@ -3,6 +3,9 @@ import 'package:brocoffe_moba/components/my_button.dart';
 import 'package:brocoffe_moba/components/my_textfield.dart';
 import 'home_page.dart';
 import 'package:provider/provider.dart';
+import 'package:brocoffe_moba/services/api_service.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'dart:convert';
 
 import 'regist_page.dart';
 
@@ -27,19 +30,40 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  void _navigateToDashboard(BuildContext context) {
-    var userData = Provider.of<UserData>(context, listen: false);
-    userData.setUsername(usernameController.text);
+  void _navigateToDashboard(BuildContext context) async {
+    final username = usernameController.text;
+    final password = passwordController.text;
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => HomePage()),
-    );
+    final response = await ApiService.login(username, password);
+    final data = response.body.trim();
+    final responseData = json.decode(data);
+
+    if (response.statusCode == 200) {
+      final data = response.body.trim();
+      print(data);
+
+      // Jika login berhasil, navigasikan ke dashboard
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(
+            username: username,
+          ),
+        ),
+      );
+    } else if (responseData['message'] == 'error: invalid credentials') {
+      Fluttertoast.showToast(
+        msg: "Invalid username or password.",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+      );
+    }
   }
 
-  // text editing controllers
-  final usernameController = TextEditingController();
-  final passwordController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
