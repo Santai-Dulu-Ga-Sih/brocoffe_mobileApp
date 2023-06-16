@@ -9,6 +9,7 @@ class CoffeeCard extends StatelessWidget {
     required this.imagePath,
     required this.coffeName,
     required this.price,
+    required String coffeeName,
   });
 
   @override

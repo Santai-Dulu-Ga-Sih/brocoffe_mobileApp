@@ -1,6 +1,6 @@
+import 'package:brocoffe_moba/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class ButtonShopee extends StatelessWidget {
   @override
@@ -27,11 +27,18 @@ class ButtonShopee extends StatelessWidget {
           children: [
             ElevatedButton(
               style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.amber)),
-              onPressed:
-                  // kirim database
-                  () => {Navigator.pop(context)},
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.amber),
+              ),
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => HomePage(
+                            username: '',
+                          )),
+                  (Route<dynamic> route) => false,
+                );
+              },
               child: const Padding(
                 padding: EdgeInsets.all(10.0),
                 child: Text('Shopee Pay'),
@@ -92,7 +99,7 @@ class CartPage extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.only(left: 20.0),
                             child: Image.asset(
-                              'lib/images/coffe_1.png',
+                              'assets/img/list_kopi/Gula_Aren_Coffee.jpg',
                               width: 100,
                             ),
                           ),
