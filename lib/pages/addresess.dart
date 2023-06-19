@@ -7,41 +7,39 @@ void main() {
 }
 
 class AddresessPage extends StatelessWidget {
-  const AddresessPage({super.key});
+  const AddresessPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          toolbarHeight: 100,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
-            color: Colors.black,
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-          ),
-          title: const Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'ADDRESESS',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'GillSans',
-                  color: Colors.black,
-                ),
-              ),
-            ],
-          ),
-          centerTitle: true,
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        toolbarHeight: 100,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          color: Colors.black,
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
-        drawer: AppDrawer(),
-        body: AddresessForm(),
+        title: const Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'ADDRESSES',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w600,
+                fontFamily: 'GillSans',
+                color: Colors.black,
+              ),
+            ),
+          ],
+        ),
+        centerTitle: true,
       ),
+      drawer: AppDrawer(),
+      body: AddresessForm(),
     );
   }
 }
@@ -106,13 +104,6 @@ class _AddresessFormState extends State<AddresessForm> {
         controller: _kodeposController,
         enabled: isEditMode,
         decoration: InputDecoration(labelText: 'Kode Pos'),
-        style:
-            TextStyle(fontFamily: 'GillSans', fontSize: 20, color: greyColor),
-      ),
-      TextField(
-        controller: _emailController,
-        enabled: isEditMode,
-        decoration: InputDecoration(labelText: 'Email'),
         style:
             TextStyle(fontFamily: 'GillSans', fontSize: 20, color: greyColor),
       ),

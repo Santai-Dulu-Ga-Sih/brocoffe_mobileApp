@@ -144,7 +144,7 @@ class CartPage extends StatelessWidget {
                     style: TextStyle(fontSize: 20, color: Colors.grey),
                   ),
                   Text(
-                    "GG. PANDEGA MANA YA KOK LUPA NO.66, SLEMAN, BATUNUNGGAL, DEPOK, DIY",
+                    "Jl. H. Mansyur No.17K, RT.11/RW.04, Bojongsoang, Kec. Bojongsoang, Kabupaten Bandung, Jawa Barat 40288",
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
                   SizedBox(
