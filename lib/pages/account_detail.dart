@@ -75,7 +75,7 @@ class _AccountDetailState extends State<AccountDetail> {
                     width: 370,
                     child: Row(children: <Widget>[
                       Text(
-                        "JOKO BUDIMAN",
+                        "Sulthon",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
@@ -106,7 +106,7 @@ class _AccountDetailState extends State<AccountDetail> {
                     width: 370,
                     child: Wrap(children: <Widget>[
                       Text(
-                        "GG. PANDEGA MANA YA KOK LUPA NO. 66, DAYEUHKOLOT, BOJONGSOANG",
+                        "Jl. H. Mansyur No.17K, RT.11/RW.04, Bojongsoang, Kec. Bojongsoang, Kabupaten Bandung, Jawa Barat 40288",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,

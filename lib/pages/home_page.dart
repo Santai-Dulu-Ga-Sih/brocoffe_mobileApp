@@ -1,9 +1,11 @@
 import 'package:brocoffe_moba/pages/addresess.dart';
+import 'package:brocoffe_moba/pages/login_page.dart';
 import 'package:brocoffe_moba/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:brocoffe_moba/pages/kopipedia.dart';
 import 'package:brocoffe_moba/pages/tentang_kami.dart';
+import 'account_detail.dart';
 import 'ezpz_page.dart';
 import 'payment_method.dart';
 
@@ -13,25 +15,18 @@ class HomePage extends StatelessWidget {
   HomePage({required this.username});
 
   final List<String> itemList = [
-    'kopirobusta',
-    'kopigayo',
-    'kopigulaaren',
-    'kopitorabika',
+    'Affogato_Coffee',
+    'Gula_Aren_Coffee',
   ];
 
   final List<String> mainTextList = [
-    'Kopi Robusta',
-    'Kopi Gayo',
-    'Kopi Gula Aren',
-    'Kopi Torabika',
+    'Affogato Coffee',
+    'Gula Aren Coffee',
   ];
 
   final List<String> subTextList = [
-    'Rp20.000',
-    'Rp25.000',
-    'Rp30.000',
-    'Rp20.000',
-    'Rp20.000'
+    'Rp33.000',
+    'Rp18.000',
   ];
   @override
   Widget build(BuildContext context) {
@@ -135,7 +130,7 @@ class HomePage extends StatelessWidget {
                 children: itemList.map((item) {
                   int index = itemList.indexOf(item);
                   return CustomCard(
-                    imagePath: 'assets/img/list_kopi/$item.png',
+                    imagePath: 'assets/img/list_kopi/$item.jpg',
                     mainText: mainTextList[index],
                     subText: subTextList[index],
                   );
@@ -309,6 +304,13 @@ class AppDrawer extends StatelessWidget {
         context, MaterialPageRoute(builder: (context) => PaymentMethod()));
   }
 
+  void _navigateToAccountDetails(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => AccountDetail()),
+    );
+  }
+
   void _navigateToAddresess(BuildContext context) {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => AddresessPage()));
@@ -436,22 +438,21 @@ class AppDrawer extends StatelessWidget {
                   ),
                 ),
                 ListTile(
-                  leading: Image.asset(
-                    'assets/icons/accountdetails.png',
-                    width: 24,
-                    height: 24,
-                  ),
-                  title: const Text(
-                    'ACCOUNT DETAILS',
-                    style: TextStyle(
-                        fontFamily: 'GillSans',
-                        fontSize: 18,
-                        fontWeight: FontWeight.normal),
-                  ),
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                ),
+                    leading: Image.asset(
+                      'assets/icons/accountdetails.png',
+                      width: 24,
+                      height: 24,
+                    ),
+                    title: GestureDetector(
+                      onTap: () => _navigateToAccountDetails(context),
+                      child: Text(
+                        'ACCOUNT DETAILS',
+                        style: TextStyle(
+                            fontFamily: 'GillSans',
+                            fontSize: 18,
+                            fontWeight: FontWeight.normal),
+                      ),
+                    )),
                 ListTile(
                   leading: Image.asset(
                     'assets/icons/addresses.png',
@@ -489,7 +490,11 @@ class AppDrawer extends StatelessWidget {
               ],
             ),
             onTap: () {
-              // Tambahkan aksi yang ingin dilakukan saat tombol "Keluar" ditekan
+              Navigator.popUntil(context, (route) => route.isFirst);
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => LoginPage()),
+              );
             },
           ),
         ],

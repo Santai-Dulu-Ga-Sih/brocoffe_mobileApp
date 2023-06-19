@@ -1,23 +1,35 @@
+import 'package:brocoffe_moba/models/products.dart';
 import 'package:flutter/material.dart';
 import 'cart.dart';
 
 class OrderPage extends StatefulWidget {
   final String nameOfProduct;
   final int priceOfProduct;
+  final List<Product> products; // Tambahkan parameter products
 
-  const OrderPage(
-      {super.key, required this.nameOfProduct, required this.priceOfProduct});
+  const OrderPage({
+    Key? key,
+    required this.nameOfProduct,
+    required this.priceOfProduct,
+    required this.products,
+  }) : super(key: key);
 
-  void _navigateToCart(BuildContext context, String nameProduct, int totalPrice,
-      int quantityProduct) {
+  void _navigateToCart(
+    BuildContext context,
+    String nameProduct,
+    int totalPrice,
+    int quantityProduct,
+  ) {
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => CartPage(
-                  nameProduct: nameOfProduct,
-                  totalPrice: totalPrice,
-                  quantityProduct: quantityProduct,
-                )));
+      context,
+      MaterialPageRoute(
+        builder: (context) => CartPage(
+          nameProduct: nameProduct,
+          totalPrice: totalPrice,
+          quantityProduct: quantityProduct,
+        ),
+      ),
+    );
   }
 
   @override
@@ -62,7 +74,7 @@ class _PlusMinusClickerState extends State<OrderPage> {
             width: double.infinity,
             color: Colors.red,
             child: Image.asset(
-              'lib/images/coffe_1.png',
+              "assets/img/list_kopi/Gula_Aren_Coffee.jpg",
               fit: BoxFit.cover,
             ),
           ),
